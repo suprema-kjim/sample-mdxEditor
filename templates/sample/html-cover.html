@@ -1,0 +1,99 @@
+<!-- HTML 미리보기의 맨 앞에 넣는 노션 스타일 커버. 문서 전체가 아니라 body 안에 들어갈 조각이며, PDF에는 쓰지 않는다. -->
+<style>
+    .notion-cover {
+        margin: 0 0 32px;
+        font-family: 'Noto Sans', 'Noto Sans KR', sans-serif;
+        color: #37352f;
+    }
+
+    /* 바탕 그림: 미리보기 폭 전체를 채운다. */
+    .notion-cover .banner {
+        height: 30vh;
+        min-height: 160px;
+        max-height: 280px;
+        background:
+            radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.35), transparent 45%),
+            linear-gradient(120deg, #1d4e89 0%, #3e7cc9 55%, #a9cdf2 100%);
+    }
+
+    /* 미리보기 본문과 같은 좌우 여백 */
+    .notion-cover .head {
+        padding: 0 24px;
+    }
+
+    /* 페이지 아이콘: 바탕 그림에 반쯤 걸친다. */
+    .notion-cover .icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 78px;
+        height: 78px;
+        margin-top: -42px;
+        border-radius: 10px;
+        background: #fff;
+        box-shadow: 0 0 0 1px rgba(15, 15, 15, 0.06), 0 4px 12px rgba(15, 15, 15, 0.12);
+        font-size: 44px;
+        line-height: 1;
+    }
+
+    .notion-cover .title {
+        margin: 24px 0 12px;
+        font-size: 40px;
+        font-weight: 700;
+        line-height: 1.2;
+    }
+
+    /* 속성 목록: 이름표와 값. 값이 비어 있는 줄은 숨긴다. */
+    .notion-cover .properties {
+        display: grid;
+        grid-template-columns: max-content 1fr;
+        column-gap: 24px;
+        align-items: center;
+        margin: 0;
+        padding-bottom: 16px;
+        border-bottom: 1px solid #e9e9e7;
+        font-size: 14px;
+        line-height: 2.1;
+    }
+
+    .notion-cover .properties dt {
+        color: #787774;
+    }
+
+    .notion-cover .properties dd {
+        margin: 0;
+    }
+
+    .notion-cover .properties dt:has(+ dd:empty),
+    .notion-cover .properties dd:empty {
+        display: none;
+    }
+
+    .notion-cover .properties .tag {
+        justify-self: start;
+        line-height: 1.5;
+        padding: 2px 6px;
+        border-radius: 4px;
+        background: #e7f0fb;
+        color: #1d4e89;
+    }
+</style>
+<header class="notion-cover">
+    <div class="banner"></div>
+    <div class="head">
+        <div class="icon" aria-hidden="true">📘</div>
+        <div class="title">{{title}}</div>
+        <dl class="properties">
+            <dt>{{label_subtitle}}</dt>
+            <dd>{{subtitle}}</dd>
+            <dt>{{label_version}}</dt>
+            <dd class="tag">{{version_number}}</dd>
+            <dt>{{label_lang}}</dt>
+            <dd>{{lang}}</dd>
+            <dt>{{label_docuNum}}</dt>
+            <dd>{{docuNum}}</dd>
+            <!-- book.yml의 properties(이름표: 값)가 적은 순서대로 들어간다. -->
+            {{properties}}
+        </dl>
+    </div>
+</header>

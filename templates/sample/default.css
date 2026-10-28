@@ -1,0 +1,238 @@
+/* MDX Editor 샘플 템플릿: 본문(목차 + 콘텐츠) 스타일. Paged.js가 @page 규칙을 처리한다. */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&family=Noto+Sans:wght@400;500;700&family=Noto+Sans+Mono&display=swap');
+
+:root {
+    --accent: #1d4e89;
+    --text: #1f2933;
+    --muted: #52606d;
+    --line: #cbd2d9;
+    --surface: #f5f7fa;
+    /* 내장 컴포넌트(Badge, Steps, Num)의 강조색 */
+    --mdx-accent: var(--accent);
+}
+
+/* 페이지 */
+@page {
+    size: A4;
+    margin: 20mm 15mm 18mm;
+
+    @top-right {
+        content: string(doctitle);
+        font-family: 'Noto Sans', 'Noto Sans KR', sans-serif;
+        font-size: 8pt;
+        color: var(--muted);
+    }
+
+    @bottom-center {
+        content: counter(page);
+        font-family: 'Noto Sans', 'Noto Sans KR', sans-serif;
+        font-size: 8pt;
+        color: var(--muted);
+    }
+}
+
+body {
+    font-family: 'Noto Sans', 'Noto Sans KR', sans-serif;
+    font-size: 9.5pt;
+    line-height: 1.6;
+    color: var(--text);
+    word-break: keep-all;
+}
+
+/* 제목: h1마다 새 쪽에서 시작하고, 머리말에 현재 h1을 표시한다. */
+h1, h2, h3, h4 {
+    line-height: 1.3;
+    break-after: avoid;
+}
+
+h1 {
+    string-set: doctitle content(text);
+    break-before: page;
+    margin: 0 0 8mm;
+    padding-bottom: 3mm;
+    border-bottom: 0.6mm solid var(--accent);
+    font-size: 20pt;
+    color: var(--accent);
+}
+
+h2 {
+    margin: 8mm 0 3mm;
+    font-size: 13pt;
+}
+
+h3 {
+    margin: 6mm 0 2mm;
+    font-size: 11pt;
+}
+
+p {
+    margin: 0 0 2.5mm;
+}
+
+a {
+    color: var(--accent);
+}
+
+ul, ol {
+    margin: 0 0 3mm;
+    padding-left: 6mm;
+}
+
+li {
+    margin: 1mm 0;
+    break-inside: avoid;
+}
+
+blockquote {
+    margin: 0 0 3mm;
+    padding: 2mm 4mm;
+    border-left: 1mm solid var(--line);
+    background: var(--surface);
+    color: var(--muted);
+}
+
+.page-break {
+    break-before: page;
+}
+
+/* 이미지: {width=…} 속성으로 크기를 정한다. .border, .btn 클래스를 지원한다. */
+img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    margin: 3mm auto;
+}
+
+img.border {
+    border: 0.3mm solid var(--line);
+}
+
+img.btn {
+    display: inline-block;
+    height: 1.2em;
+    margin: 0 0.2em;
+    vertical-align: -0.2em;
+}
+
+/* 표 */
+table {
+    width: 100%;
+    margin: 0 0 4mm;
+    border-collapse: collapse;
+    font-size: 8.5pt;
+}
+
+th, td {
+    padding: 1.8mm 2.5mm;
+    border-bottom: 0.3mm solid var(--line);
+    text-align: left;
+}
+
+th {
+    background: var(--surface);
+    font-weight: 700;
+}
+
+tr {
+    break-inside: avoid;
+}
+
+/* 인라인 코드 */
+code {
+    font-family: 'Noto Sans Mono', monospace;
+    font-size: 0.9em;
+}
+
+p code, li code, td code {
+    padding: 0.2mm 1mm;
+    border-radius: 0.8mm;
+    background: var(--surface);
+}
+
+/* 코드 블록 (```lang [제목]) */
+.md-code-block__container {
+    margin: 0 0 4mm;
+    border: 0.3mm solid var(--line);
+    border-radius: 1.5mm;
+    overflow: hidden;
+    break-inside: avoid;
+}
+
+.md-code-block__title {
+    padding: 1.5mm 3mm;
+    border-bottom: 0.3mm solid var(--line);
+    background: var(--surface);
+    font-size: 8pt;
+    color: var(--muted);
+}
+
+.md-code-block__container pre {
+    margin: 0;
+    padding: 3mm;
+    white-space: pre-wrap;
+    font-size: 8pt;
+    line-height: 1.55;
+}
+
+.md-code-block__line {
+    display: block;
+}
+
+/* 안내 상자 (:::info, :::tip 등). 종류별 색은 내장 Callout 컴포넌트의 Callout.css가 정한다. */
+.container {
+    display: flex;
+    gap: 3mm;
+    margin: 0 0 4mm;
+    padding: 3mm 4mm;
+    border-left: 1mm solid var(--accent);
+    background: #eaf1fa;
+    font-size: 8.5pt;
+    break-inside: avoid;
+}
+
+.container .icon svg {
+    width: 5mm;
+    height: 5mm;
+}
+
+.container .content > :last-child {
+    margin-bottom: 0;
+}
+
+/* 목차 */
+.toc-title {
+    margin-bottom: 8mm;
+    font-size: 20pt;
+    font-weight: 700;
+    color: var(--accent);
+}
+
+.table-of-contents ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.table-of-contents > ul > li {
+    margin: 0 0 4mm;
+    font-weight: 700;
+    font-size: 11pt;
+}
+
+.table-of-contents ul ul > li {
+    margin: 1.5mm 0 0 5mm;
+    font-weight: 400;
+    font-size: 9pt;
+}
+
+.table-of-contents a {
+    display: flex;
+    color: inherit;
+    text-decoration: none;
+}
+
+.table-of-contents a::after {
+    content: target-counter(attr(href), page);
+    margin-left: auto;
+    padding-left: 4mm;
+}

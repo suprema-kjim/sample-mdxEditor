@@ -1,0 +1,195 @@
+# 컴포넌트 사용하기
+
+`.mdx` 문서에서는 마크다운 사이에 컴포넌트를 바로 쓸 수 있습니다. 이 장도 `.mdx` 문서로 작성되어 있습니다.
+
+## 쪽 나누기: PageBreak
+
+`<PageBreak />`를 넣은 위치에서 다음 쪽으로 넘어갑니다. import 없이 바로 쓸 수 있는 에디터 내장 컴포넌트입니다.
+
+```mdx [components.mdx]
+앞 쪽의 마지막 문단입니다.
+
+<PageBreak />
+
+다음 쪽의 첫 문단입니다.
+```
+
+`.md` 문서에서는 컴포넌트를 쓸 수 없으므로 `<div class="page-break"></div>`를 넣습니다. 두 방법의 결과는 같습니다.
+
+이 문단 바로 뒤에 `<PageBreak />`를 넣었으므로, 다음 절은 새 쪽에서 시작합니다.
+
+<PageBreak />
+
+## 안내 상자: Callout
+
+`<Callout>` 컴포넌트로 안내 상자를 넣습니다. `type`에는 `info`, `tip`, `note`, `caution`, `warning`을 씁니다. 생략하면 `info`입니다.
+
+```mdx [components.mdx]
+<Callout type="caution">
+
+주의가 필요한 내용을 적습니다.
+
+</Callout>
+```
+
+<Callout type="caution">
+
+주의가 필요한 내용을 적습니다. 안쪽에도 **마크다운**을 쓸 수 있습니다.
+
+</Callout>
+
+`.md` 문서의 `:::info`, `:::tip` 같은 안내 상자도 같은 `Callout` 컴포넌트로 그려집니다. 그래서 `.md`와 `.mdx`의 안내 상자는 모양이 같고, 디자인은 템플릿이 정합니다.
+
+## 그 밖의 내장 컴포넌트
+
+### 키보드 키: Kbd
+
+<Kbd>Ctrl</Kbd> + <Kbd>S</Kbd>를 누르면 문서를 저장합니다.
+
+```mdx
+<Kbd>Ctrl</Kbd> + <Kbd>S</Kbd>
+```
+
+### 버전 배지: Badge
+
+<Badge>1.2.0</Badge> 기본 배지는 문서 언어에 맞는 문구("발생 버전")를 앞에 붙입니다. <Badge only>1.2.0</Badge> `only`를 붙이면 문구 없이 강조색으로 표시하고, <Badge label="지원 버전">2.0</Badge> `label`로 문구를 직접 정할 수도 있습니다.
+
+```mdx
+<Badge>1.2.0</Badge>
+<Badge only>1.2.0</Badge>
+<Badge label="지원 버전">2.0</Badge>
+```
+
+### 원 번호: Num
+
+<Num num={1} /> <Num num={2} /> <Num num={3} />처럼 1부터 20까지의 번호를 원 안에 넣습니다. 그림의 각 부분을 설명할 때 씁니다.
+
+```mdx
+<Num num={1} /> 메뉴 버튼
+```
+
+### 단계: Steps, Step
+
+<Steps>
+<Step>
+
+**폴더를 엽니다.** 탐색기에서 작업할 폴더를 엽니다.
+
+</Step>
+<Step>
+
+**문서를 고칩니다.** 오른쪽 미리보기에서 결과를 바로 확인합니다.
+
+</Step>
+<Step>
+
+**PDF로 내보냅니다.** 미리보기의 내보내기 단추를 누릅니다.
+
+</Step>
+</Steps>
+
+```mdx
+<Steps>
+<Step>
+
+**폴더를 엽니다.** 탐색기에서 작업할 폴더를 엽니다.
+
+</Step>
+<Step>
+
+**문서를 고칩니다.**
+
+</Step>
+</Steps>
+```
+
+### 여러 열: Columns, Column
+
+<Columns>
+  <Column className="width--30">
+
+  ![편집기 화면 예시](images/window.svg)
+
+  </Column>
+  <Column>
+
+  열은 기본으로 남은 폭을 똑같이 나눠 갖습니다. `className="width--30"`처럼 폭 비율을 정하거나, `text--right`로 정렬을 바꿀 수 있습니다.
+
+  </Column>
+</Columns>
+
+```mdx
+<Columns>
+  <Column className="width--30">
+
+  ![화면](images/window.svg)
+
+  </Column>
+<Column>
+
+설명
+
+</Column>
+</Columns>
+```
+
+강조색(배지, 단계 번호, 원 번호)은 템플릿 CSS의 `--mdx-accent` 변수로 바꿉니다.
+
+## 문서 조각 불러오기: import
+
+여러 문서에 똑같이 들어가는 내용은 따로 문서 조각으로 만들고, `.mdx` 문서에서 `import`로 불러와 넣을 수 있습니다. 아래 표는 `parts/shortcuts.mdx` 조각을 불러온 것입니다.
+
+import Shortcuts from './parts/shortcuts.mdx'
+
+<Shortcuts note="단축키는 macOS에서 Ctrl 대신 Cmd입니다." />
+
+```mdx [components.mdx]
+import Shortcuts from './parts/shortcuts.mdx'
+
+<Shortcuts note="단축키는 macOS에서 Ctrl 대신 Cmd입니다." />
+```
+
+- `.md`와 `.mdx` 문서를 불러올 수 있습니다. 조각이 다른 조각을 불러올 수도 있습니다.
+- 조각 안의 제목도 목차와 PDF 북마크에 들어갑니다.
+- 조각 안의 이미지 경로는 조각 파일을 기준으로 찾습니다.
+- `.mdx` 조각은 쓰는 쪽에서 넘긴 값을 `props`로 받습니다. 위 예에서 조각은 `{props.note}`로 문구를 받아 표의 아래에 넣습니다.
+- 조각은 `book.yml`의 `documents`에 넣지 않습니다. 넣으면 그 자리에 한 번 더 들어갑니다.
+
+<Callout type="caution">
+
+문서끼리 서로를 불러오면(순환 import) 오류가 납니다. 컴포넌트(`.tsx`)는 import하지 않고 `components` 폴더에 두면 바로 쓸 수 있습니다.
+
+</Callout>
+
+## 컴포넌트 찾는 순서
+
+문서에서 쓸 수 있는 컴포넌트는 다음 세 곳의 컴포넌트를 합친 것입니다. 이름이 같으면 표의 위쪽이 이깁니다.
+
+| 순서 | 위치 | 용도 |
+| --- | --- | --- |
+| 1 | 프로젝트의 `components` 폴더 | 이 문서에서만 쓰는 컴포넌트 |
+| 2 | 템플릿의 `components` 폴더 | 템플릿 디자인에 묶인 컴포넌트 |
+| 3 | 에디터 내장 | `PageBreak`, `Callout`, `Kbd`, `Badge`, `Num`, `Steps`, `Step`, `Columns`, `Column` |
+
+예를 들어 템플릿이 `Callout`을 다시 정의하면, 그 템플릿을 쓰는 문서의 안내 상자는 모두 템플릿의 디자인을 따릅니다.
+
+## 컴포넌트 만들기
+
+프로젝트의 `components` 폴더에 파일을 하나 만들면 컴포넌트 하나가 됩니다.
+
+```tsx [components/Badge.tsx]
+export default function Badge({ children }: { children?: React.ReactNode }) {
+  return <span className="badge">{children}</span>;
+}
+```
+
+- 파일 이름이 컴포넌트 이름이 되며, 대문자로 시작해야 합니다. 컴포넌트는 `default export`로 내보냅니다.
+- 같은 이름의 CSS 파일(`Badge.css`)이 있으면 함께 적용됩니다.
+- import는 같은 폴더 안의 파일과 `react`만 쓸 수 있습니다. `.svg` 파일은 문자열로 가져옵니다.
+- PDF에는 컴포넌트가 그린 HTML만 남습니다. 클릭 같은 동작은 HTML 미리보기에서만 동작합니다.
+
+<Callout type="info">
+
+프로젝트 폴더 안의 컴포넌트는 코드이므로, 처음 여는 폴더는 신뢰를 확인한 뒤에 실행합니다. 확인하기 전에는 에디터 내장 컴포넌트만 씁니다.
+
+</Callout>

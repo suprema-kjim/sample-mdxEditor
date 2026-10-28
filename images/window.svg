@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 400" font-family="Noto Sans, Noto Sans KR, sans-serif">
+  <rect width="640" height="400" fill="#1f2933"/>
+  <rect width="640" height="28" fill="#323f4b"/>
+  <circle cx="16" cy="14" r="5" fill="#e66a6a"/>
+  <circle cx="32" cy="14" r="5" fill="#e6c26a"/>
+  <circle cx="48" cy="14" r="5" fill="#6ac27a"/>
+  <rect y="28" width="44" height="372" fill="#29343e"/>
+  <g fill="#7b8794">
+    <rect x="12" y="44" width="20" height="20" rx="3"/>
+    <rect x="12" y="78" width="20" height="20" rx="3"/>
+    <rect x="12" y="112" width="20" height="20" rx="3"/>
+  </g>
+  <rect x="44" y="28" width="150" height="372" fill="#2b3640"/>
+  <g font-size="11" fill="#cbd2d9">
+    <text x="56" y="50" font-weight="700">EXPLORER</text>
+    <text x="64" y="74">book.yml</text>
+    <text x="64" y="94" fill="#fff">introduction.md</text>
+    <text x="64" y="114">writing.md</text>
+    <text x="64" y="134">export.md</text>
+  </g>
+  <rect x="44" y="84" width="150" height="16" fill="#ffffff" opacity="0.08"/>
+  <rect x="194" y="28" width="223" height="372" fill="#1f2933"/>
+  <g font-size="10" font-family="Noto Sans Mono, monospace" fill="#9aa5b1">
+    <text x="206" y="56"><tspan fill="#6aa6e6"># 소개</tspan></text>
+    <text x="206" y="80">MDX Editor는 마크다운과</text>
+    <text x="206" y="96">MDX 문서를 편집하고...</text>
+    <text x="206" y="124"><tspan fill="#6aa6e6">## 주요 기능</tspan></text>
+    <text x="206" y="148">- 폴더 열기</text>
+    <text x="206" y="164">- PDF 출력</text>
+  </g>
+  <rect x="417" y="28" width="223" height="372" fill="#f5f7fa"/>
+  <rect x="437" y="48" width="183" height="332" fill="#fff" stroke="#cbd2d9"/>
+  <rect x="451" y="66" width="80" height="10" fill="#1d4e89"/>
+  <g fill="#cbd2d9">
+    <rect x="451" y="90" width="150" height="6"/>
+    <rect x="451" y="102" width="130" height="6"/>
+    <rect x="451" y="126" width="60" height="8" fill="#52606d"/>
+    <rect x="451" y="146" width="140" height="6"/>
+    <rect x="451" y="158" width="110" height="6"/>
+  </g>
+</svg>

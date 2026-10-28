@@ -1,0 +1,16 @@
+title: My Book
+subtitle: 사용자 가이드
+version: 0.1.0
+lang: ko-KR
+docuNum: 1.00
+outputName: My_Book
+template: templates/sample
+# HTML 미리보기 커버의 속성 목록에 적은 순서대로 들어간다. (이름표: 값)
+properties:
+  작성자: MDX Editor 팀
+  라이선스: MIT
+documents:
+  - introduction.md
+  - writing.md
+  - components.mdx
+  - export.md

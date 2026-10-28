@@ -1,0 +1,11 @@
+{
+  "name": "Sample",
+  "version": "0.1.0",
+  "styles": ["default.css"],
+  "cover": "cover.html",
+  "back": "back.html",
+  "htmlCover": "html-cover.html",
+  "smallTitleLength": 24,
+  "tocLevels": [1, 2],
+  "bookmarkLevels": [1, 2]
+}

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="{{lang_code}}">
+<head>
+    <meta charset="utf-8">
+    <title>백 커버</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&family=Noto+Sans:wght@400;700&display=swap');
+
+        @page {
+            size: A4;
+            margin: 0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Sans', 'Noto Sans KR', sans-serif;
+            width: 210mm;
+            height: 297mm;
+            color: #52606d;
+        }
+
+        .back {
+            position: relative;
+            width: 210mm;
+            height: 297mm;
+            background: #f5f7fa;
+        }
+
+        .band {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 12mm;
+            background: #1d4e89;
+        }
+
+        .footer {
+            position: absolute;
+            left: 20mm;
+            right: 20mm;
+            bottom: 25mm;
+            font-size: 8.5pt;
+            line-height: 1.6;
+        }
+
+        .footer strong {
+            display: block;
+            font-size: 11pt;
+            color: #1f2933;
+        }
+    </style>
+</head>
+<body>
+    <div class="back">
+        <div class="footer">
+            <strong>{{title}}</strong>
+            {{subtitle}} · {{version}}<br>
+            이 문서는 MDX Editor로 만들었습니다.
+        </div>
+        <div class="band"></div>
+    </div>
+</body>
+</html>
